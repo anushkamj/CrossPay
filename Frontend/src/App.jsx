@@ -5,10 +5,80 @@ import './App.css'
 
 const rate = 820
 
+const featureHighlights = [
+  {
+    icon: 'shield',
+    title: 'Smart FX timing',
+    detail: 'We auto-lock favorable rates before payout hits.',
+    why: 'Why it matters: your team keeps more of each cycle.',
+  },
+  {
+    icon: 'globe',
+    title: 'Compliance handled',
+    detail: 'KYC / AML + tax reporting bundled per jurisdiction.',
+    why: 'Why it matters: No more local legal scramble.',
+  },
+  {
+    icon: 'lightning',
+    title: 'Transparent fees',
+    detail: 'See mid-market, CrossPay fee, and final take-home live.',
+    why: 'Why it matters: trust is built in every conversion.',
+  },
+]
+
 const walletDetails = {
-  usd: 'ACH + wire details, domestic routing, instant card loads.',
-  gbp: 'Faster Payments + SEPA, optional plastic debit, HMRC ready.',
-  inr: 'UPI + IMPS delivery, automatic FIRC proofs, RBI compliant.',
+  usd: 'ACH + Fedwire + instant card loads. Share USD instructions instantly.',
+  gbp: 'GBP Faster Payments & SEPA. HMRC-ready statements on tap.',
+  inr: 'UPI + IMPS delivery, automatic FIRC proofs, RBI-compliant.',
+}
+
+const flowSteps = [
+  { number: '01', title: 'Collect salary', detail: 'Employers, DAOs, and PSPs send USD/EUR/USDC with unique references.' },
+  { number: '02', title: 'Optimize FX', detail: 'Neon slider splits instant vs optimised conversions + hedges.' },
+  { number: '03', title: 'Disburse locally', detail: 'Buckets move to bank, cards, and savings destinations automatically.' },
+  { number: '04', title: 'Automate obligations', detail: 'Taxes, benefits, and top-ups handled without manual instructions.' },
+]
+
+const cities = [
+  { flag: '🇬🇧', label: 'London payroll hub' },
+  { flag: '🇳🇬', label: 'Lagos payouts live' },
+  { flag: '🇮🇳', label: 'Bengaluru UPI ready' },
+  { flag: '🇺🇸', label: 'New York employers' },
+  { flag: '🇪🇺', label: 'Berlin contractors' },
+  { flag: '🇵🇭', label: 'Manila freelancers' },
+]
+
+function Icon({ name }) {
+  switch (name) {
+    case 'shield':
+      return (
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <path d="M12 3l8 3v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-3z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
+      )
+    case 'globe':
+      return (
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M3 12h18M12 3c3 4 3 14 0 18-3-4-3-14 0-18z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
+      )
+    case 'lightning':
+      return (
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z" fill="none" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
+      )
+    case 'wallet':
+      return (
+        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="12" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <circle cx="16" cy="12" r="1.5" fill="currentColor" />
+        </svg>
+      )
+    default:
+      return null
+  }
 }
 
 function App() {
@@ -33,6 +103,7 @@ function App() {
 
   return (
     <div className="site">
+      <div className="nebula" />
       <header className="site-header">
         <nav className="nav">
           <a href="#top" className="brand">
@@ -40,16 +111,19 @@ function App() {
           </a>
           <ul>
             <li>
-              <a href="#features">Features</a>
+              <a href="#features">FEATURES</a>
             </li>
+            <span className="nav-sep">|</span>
             <li>
-              <a href="#wallet">Wallet</a>
+              <a href="#wallet">WALLET</a>
             </li>
+            <span className="nav-sep">|</span>
             <li>
-              <a href="#flow">Flow</a>
+              <a href="#flow">FLOW</a>
             </li>
+            <span className="nav-sep">|</span>
             <li>
-              <a href="#characters">Characters</a>
+              <a href="#characters">CHARACTERS</a>
             </li>
           </ul>
           <div className="nav-actions">
@@ -74,34 +148,34 @@ function App() {
 
       <main>
         <section className="hero" id="top">
-          <div className="hero-copy">
-            <p className="eyebrow">Cross-border salary stack</p>
-            <h1>Global salaries that feel local—instantly.</h1>
+          <div className="hero-copy reveal">
+            <p className="eyebrow">CROSS-BORDER SALARY STACK</p>
+            <h1>Global salaries. Local superpowers.</h1>
             <p className="lead">
-              CrossPay handles FX, fees, compliance, and delivery so your teams can
-              earn in one country and live in another without the chaos.
+              CrossPay absorbs FX, compliance, and delivery complexity. Salary feels instant, transparent,
+              and fully automated for teams who work globally and live locally.
             </p>
             <div className="hero-cta">
-              <button className="primary">Get early access</button>
+              <button className="primary ripple">Get early access</button>
               <button className="ghost">Talk to us</button>
             </div>
             <div className="stats">
               <div>
                 <span>$4.2B</span>
-                <p>processed seamlessly</p>
+                <p>Processed seamlessly</p>
               </div>
               <div>
                 <span>120+</span>
-                <p>destination countries</p>
+                <p>Destination countries</p>
               </div>
               <div>
                 <span>&lt;35s</span>
-                <p>average settlement time</p>
+                <p>Average settlement time</p>
               </div>
             </div>
           </div>
           <div className="hero-panel">
-            <div className="wallet-card float-card">
+            <div className="wallet-card glass-card">
               <div className="wallet-card__header">
                 <span>Multi-currency balance</span>
                 <span className="status">Live</span>
@@ -130,15 +204,14 @@ function App() {
                 <strong>₹ 312,000 arriving Friday</strong>
               </div>
             </div>
-            <div className="globe-card float-card delay">
-              <p>Turn payouts on across the globe</p>
+            <div className="globe-card glass-card delay">
+              <p>Global cities ready</p>
               <div className="globe-grid">
-                <span>🇬🇧 London</span>
-                <span>🇳🇬 Lagos</span>
-                <span>🇮🇳 Bengaluru</span>
-                <span>🇺🇸 New York</span>
-                <span>🇪🇺 Berlin</span>
-                <span>🇵🇭 Manila</span>
+                {cities.map((city) => (
+                  <span key={city.label}>
+                    {city.flag} {city.label}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -148,74 +221,50 @@ function App() {
 
         <section className="section" id="features">
           <div className="section-heading">
-            <p className="eyebrow">Why CrossPay</p>
-            <h2>Enterprise-grade rails, consumer-level clarity.</h2>
-            <p>
-              CrossPay abstracts the mess of currencies, banking partners, and
-              compliance into a single elegant salary wallet.
+            <p className="eyebrow">WHY IT MATTERS</p>
+            <h2>Enterprise rails with playful clarity.</h2>
+            <p className="subhead">
+              Minimal UI, powerful exports, and automation primitives so CrossPay feels like the Zerodha console for salaries.
             </p>
           </div>
           <div className="grid grid-3">
-            <article className="card">
-              <h3>Smart FX timing</h3>
-              <p>
-                We watch market moves and auto-lock favorable rates so your people
-                don&apos;t lose money between payday and payout.
-              </p>
-            </article>
-            <article className="card">
-              <h3>Compliance handled</h3>
-              <p>
-                KYC, AML, tax disclosures: handled in every jurisdiction so your
-                team can move quickly with confidence.
-              </p>
-            </article>
-            <article className="card">
-              <h3>Transparent fees</h3>
-              <p>
-                No double spreads or surprise deductions. See the exact fee before
-                committing and share receipts automatically.
-              </p>
-            </article>
+            {featureHighlights.map((item) => (
+              <article className="card glass-card lift" key={item.title}>
+                <div className="icon-pill">
+                  <Icon name={item.icon} />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+                <small>{item.why}</small>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="section" id="flow">
+        <section className="section flow-section" id="flow">
           <div className="section-heading">
-            <p className="eyebrow">Flow</p>
-            <h2>How salary moves through CrossPay</h2>
+            <p className="eyebrow">FLOW</p>
+            <h2>Every salary move plotted.</h2>
+            <p className="subhead">A neon timeline spells out exactly what happens between payroll file and local take-home.</p>
           </div>
-          <div className="flow">
-            <div className="flow-step">
-              <span>01</span>
-              <h4>Collect salary</h4>
-              <p>Receive payroll in USD, EUR, or crypto from employers or DAOs.</p>
-            </div>
-            <div className="flow-step">
-              <span>02</span>
-              <h4>Optimize FX</h4>
-              <p>CrossPay executes hedged conversions with bank-grade liquidity.</p>
-            </div>
-            <div className="flow-step">
-              <span>03</span>
-              <h4>Disburse locally</h4>
-              <p>Funds hit local accounts or cards in seconds with local proof.</p>
-            </div>
-            <div className="flow-step">
-              <span>04</span>
-              <h4>Automate obligations</h4>
-              <p>We auto-pay taxes, benefits, and saving rules so pay feels native.</p>
-            </div>
+          <div className="flow-timeline">
+            {flowSteps.map((step, index) => (
+              <div className="flow-step" key={step.title}>
+                <div className="flow-number">{step.number}</div>
+                <h4>{step.title}</h4>
+                <p>{step.detail}</p>
+                <span>Step {index + 1}</span>
+              </div>
+            ))}
           </div>
         </section>
 
         <section className="section split" id="wallet">
-          <div>
-            <p className="eyebrow">Salary wallet</p>
-            <h2>Control every currency from one pane of glass.</h2>
-            <p>
-              Toggle between wallets, freeze cards, schedule payouts, and share
-              compliant statements with employers in a click.
+          <div className="wallet-copy">
+            <p className="eyebrow">SALARY WALLET</p>
+            <h2>Control each currency like a pro terminal.</h2>
+            <p className="subhead">
+              Wallet tabs, quick FX allocation, and instant statements. Everything is exportable and backed by glowing micro-interactions.
             </p>
             <div className="wallet-tabs">
               {Object.keys(walletDetails).map((key) => (
@@ -237,59 +286,58 @@ function App() {
               ))}
             </ul>
           </div>
-          <div className="calculator">
+          <div className="calculator glass-card">
             <div className="calc-header">
-              <p>FX preview</p>
-              <strong>Live mid-market + 0.35% fee</strong>
+              <p>FX Preview</p>
+              <strong>Mid + 0.35% fee · neon slider</strong>
             </div>
             <div className="calc-body">
               <label htmlFor="salaryRange">Salary amount</label>
               <input
                 type="range"
                 id="salaryRange"
+                className="neon-range"
                 min="2000"
                 max="15000"
                 value={salary}
                 onChange={(event) => setSalary(Number(event.target.value))}
               />
               <div className="calc-values">
-                <div>
-                  <p>Origin (USD)</p>
+                <div className="pill">
+                  <p>Origin</p>
                   <h3>${converted.origin.toLocaleString()}</h3>
                 </div>
-                <div>
-                  <p>Local take-home (NGN)</p>
+                <div className="pill accent">
+                  <p>Local take-home</p>
                   <h3>₦{converted.local.toLocaleString()}</h3>
                 </div>
               </div>
               <p className="calc-foot">
-                Fees ${converted.fee.toFixed(2)} · rate guaranteed for 24h once locked.
+                Fees ${converted.fee.toFixed(2)} · neon lock pulses when rate is guaranteed.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="section" id="testimonials">
+        <section className="section testimonials" id="testimonials">
           <div className="section-heading">
-            <p className="eyebrow">Proof</p>
-            <h2>Teams that live on CrossPay</h2>
+            <p className="eyebrow">PROOF</p>
+            <h2>Teams that live on CrossPay.</h2>
+            <p className="subhead">Short stories, instant conviction.</p>
           </div>
           <div className="grid grid-2">
-            <article className="testimonial">
+            <article className="testimonial glass-card lift">
               <p>
-                “I pay a US team and live in Nairobi. CrossPay is the first wallet
-                that actually made both worlds click with instant FX transparency.”
+                “I pay a US team and live in Nairobi. CrossPay is the first wallet that makes FX transparent and receipts auditor-ready.”
               </p>
               <div>
                 <strong>Jason · Fractional CFO</strong>
                 <span>Supports teams in 5 countries</span>
               </div>
             </article>
-            <article className="testimonial">
+            <article className="testimonial glass-card lift">
               <p>
-                “My DAO contributors are everywhere. Instead of juggling exchanges
-                and local banks, I just send USDC in and CrossPay handles local
-                delivery + compliance receipts.”
+                “My DAO contributors are everywhere. I just send USDC in and CrossPay runs local delivery + compliance proof.”
               </p>
               <div>
                 <strong>Maya · Ops at Layer3 DAO</strong>
@@ -299,29 +347,54 @@ function App() {
           </div>
         </section>
 
-        <section className="section cta" id="ctaSection">
+        <section className="section cta glass-card" id="ctaSection">
           <div>
-            <p className="eyebrow">Ready?</p>
+            <p className="eyebrow">READY?</p>
             <h2>Turn global salaries into a local superpower.</h2>
-            <p>
-              Join the private beta to automate FX, payroll, and compliance across
-              borders.
-            </p>
+            <p className="subhead">Join the private beta, wire in payroll, and watch CrossPay automate everything.</p>
           </div>
           <div className="cta-actions">
             <input type="email" placeholder="Work email" />
-            <button className="primary">Join waitlist</button>
+            <button className="primary ripple">Join waitlist</button>
           </div>
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div>© {new Date().getFullYear()} CrossPay · Global salary wallet</div>
-        <div className="footer-links">
-          <a href="#">Security</a>
-          <a href="#">Legal</a>
-          <a href="#">Support</a>
+      <footer className="site-footer glass-card">
+        <div className="footer-brand">
+          <div className="mascot">🦊</div>
+          <div>
+            <strong>CrossPay</strong>
+            <p>Pixel-serious wallet for global salaries.</p>
+          </div>
         </div>
+        <div className="footer-grid">
+          <div>
+            <h5>Product</h5>
+            <a href="#wallet">Wallet</a>
+            <a href="#flow">Automation</a>
+            <a href="#features">Console</a>
+          </div>
+          <div>
+            <h5>Legal</h5>
+            <a href="#">Compliance</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+          <div>
+            <h5>Company</h5>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+          </div>
+          <div>
+            <h5>Contact</h5>
+            <a href="mailto:hey@crosspay.global">hey@crosspay.global</a>
+            <a href="#">X / Twitter</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+        <p className="footer-note">© {new Date().getFullYear()} CrossPay · Built with glass + neon energy.</p>
       </footer>
     </div>
   )

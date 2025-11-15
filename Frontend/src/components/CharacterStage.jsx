@@ -43,21 +43,17 @@ const CharacterStage = ({ characters }) => {
       <div className="character-stage">
         {characters.map((character) => {
           const active = states[character.id]
-          const animationClass = ['character-image', ...(active?.classes || [])]
+          const animationClass = ['character-image', `idle-${character.id}`, ...(active?.classes || [])]
             .filter(Boolean)
             .join(' ')
 
           return (
-            <article
-              key={character.id}
-              className="character-bubble"
-              style={{ top: character.position.top, left: character.position.left }}
-            >
+            <article key={character.id} className="character-bubble glass-card lift" data-character={character.id}>
               <img src={character.image} alt={character.name} className={animationClass} />
               <div className="bubble-info">
                 <h3>{character.name}</h3>
                 <p>{character.tagline}</p>
-                <button type="button" onClick={() => handleAction(character)}>
+                <button type="button" className="ripple" onClick={() => handleAction(character)}>
                   {character.buttonLabel}
                 </button>
                 <span aria-live="polite">{active?.message || character.idle}</span>
