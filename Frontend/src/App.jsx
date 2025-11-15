@@ -5,85 +5,40 @@ import './App.css'
 
 const rate = 820
 
-const featureHighlights = [
+const narrativeBlocks = [
   {
-    icon: 'shield',
-    title: 'Smart FX timing',
-    detail: 'We auto-lock favorable rates before payout hits.',
-    why: 'Why it matters: your team keeps more of each cycle.',
+    title: 'Problem',
+    copy: 'Global salaries juggle FX timing, bank partners, compliance, and communication. Teams lose money + confidence.',
   },
   {
-    icon: 'globe',
-    title: 'Compliance handled',
-    detail: 'KYC / AML + tax reporting bundled per jurisdiction.',
-    why: 'Why it matters: No more local legal scramble.',
+    title: 'Solution',
+    copy: 'CrossPay abstracts everything into a salary wallet that connects to Arc. Automations, proofs, and FX live together.',
   },
   {
-    icon: 'lightning',
-    title: 'Transparent fees',
-    detail: 'See mid-market, CrossPay fee, and final take-home live.',
-    why: 'Why it matters: trust is built in every conversion.',
+    title: 'Why blockchain',
+    copy: 'USDC on Arc + smart contracts unlock deterministic settlement, programmable rules, and transparent receipts.',
   },
 ]
 
-const walletDetails = {
-  usd: 'ACH + Fedwire + instant card loads. Share USD instructions instantly.',
-  gbp: 'GBP Faster Payments & SEPA. HMRC-ready statements on tap.',
-  inr: 'UPI + IMPS delivery, automatic FIRC proofs, RBI-compliant.',
-}
+const contractBoxes = ['FX Optimizer', 'Salary Streamer', 'Payment Splitter', 'Compliance Receipts', 'Employer Escrow']
 
-const flowSteps = [
-  { number: '01', title: 'Collect salary', detail: 'Employers, DAOs, and PSPs send USD/EUR/USDC with unique references.' },
-  { number: '02', title: 'Optimize FX', detail: 'Neon slider splits instant vs optimised conversions + hedges.' },
-  { number: '03', title: 'Disburse locally', detail: 'Buckets move to bank, cards, and savings destinations automatically.' },
-  { number: '04', title: 'Automate obligations', detail: 'Taxes, benefits, and top-ups handled without manual instructions.' },
+const stablecoinLogic = [
+  'Programmable holds + release windows per jurisdiction.',
+  'On-chain FX savings proofs for employers + regulators.',
+  'Bucket rules route USDC to bank accounts, cards, or DeFi destinations.',
+  'Compliance receipts minted per payout for audit trails.',
 ]
 
-const cities = [
-  { flag: '🇬🇧', label: 'London payroll hub' },
-  { flag: '🇳🇬', label: 'Lagos payouts live' },
-  { flag: '🇮🇳', label: 'Bengaluru UPI ready' },
-  { flag: '🇺🇸', label: 'New York employers' },
-  { flag: '🇪🇺', label: 'Berlin contractors' },
-  { flag: '🇵🇭', label: 'Manila freelancers' },
+const flowDiagram = [
+  'US employer funds Escrow with USD/USDC on Arc.',
+  'FX Optimizer locks a conversion window + hedges volatility.',
+  'Salary Streamer batches conversions + triggers Payment Splitter.',
+  'Payment Splitter routes buckets to banks, cards, or on-chain vaults.',
+  'Compliance Receipts + analytics pushed to employer & user console.',
 ]
-
-function Icon({ name }) {
-  switch (name) {
-    case 'shield':
-      return (
-        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-          <path d="M12 3l8 3v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-3z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-      )
-    case 'globe':
-      return (
-        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          <path d="M3 12h18M12 3c3 4 3 14 0 18-3-4-3-14 0-18z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-      )
-    case 'lightning':
-      return (
-        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-          <path d="M13 2L5 13h6l-1 9 8-11h-6l1-9z" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-      )
-    case 'wallet':
-      return (
-        <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-          <rect x="3" y="6" width="18" height="12" rx="3" ry="3" fill="none" stroke="currentColor" strokeWidth="1.6" />
-          <circle cx="16" cy="12" r="1.5" fill="currentColor" />
-        </svg>
-      )
-    default:
-      return null
-  }
-}
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('crosspay-theme') || 'dark')
-  const [walletTab, setWalletTab] = useState('usd')
   const [salary, setSalary] = useState(6000)
 
   useEffect(() => {
@@ -111,7 +66,7 @@ function App() {
           </a>
           <ul>
             <li>
-              <a href="#features">FEATURES</a>
+              <a href="#narrative">PLAYBOOK</a>
             </li>
             <span className="nav-sep">|</span>
             <li>
@@ -119,11 +74,11 @@ function App() {
             </li>
             <span className="nav-sep">|</span>
             <li>
-              <a href="#flow">FLOW</a>
+              <a href="#contracts">ARCHITECTURE</a>
             </li>
             <span className="nav-sep">|</span>
             <li>
-              <a href="#characters">CHARACTERS</a>
+              <a href="#characters">CREW</a>
             </li>
           </ul>
           <div className="nav-actions">
@@ -149,209 +104,159 @@ function App() {
       <main>
         <section className="hero" id="top">
           <div className="hero-copy reveal">
-            <p className="eyebrow">CROSS-BORDER SALARY STACK</p>
-            <h1>Global salaries. Local superpowers.</h1>
+            <p className="eyebrow">CrossPay · Global salaries made local</p>
+            <h1>Earn anywhere. Live as a local.</h1>
             <p className="lead">
-              CrossPay absorbs FX, compliance, and delivery complexity. Salary feels instant, transparent,
-              and fully automated for teams who work globally and live locally.
+              CrossPay makes global salaries feel local—no matter where you live, work, or send money.
+              You get paid in one country, we auto-handle chains, fees, FX timing, and compliance so spending feels native.
             </p>
             <div className="hero-cta">
-              <button className="primary ripple">Get early access</button>
-              <button className="ghost">Talk to us</button>
+              <button className="primary ripple">Launch beta</button>
+              <button className="ghost">See console</button>
             </div>
             <div className="stats">
               <div>
                 <span>$4.2B</span>
-                <p>Processed seamlessly</p>
+                <p>Processed</p>
               </div>
               <div>
                 <span>120+</span>
-                <p>Destination countries</p>
+                <p>Countries live</p>
               </div>
               <div>
                 <span>&lt;35s</span>
-                <p>Average settlement time</p>
+                <p>Settlement</p>
               </div>
             </div>
           </div>
           <div className="hero-panel">
-            <div className="wallet-card glass-card">
+            <div className="wallet-card glass-card hero-salary">
               <div className="wallet-card__header">
-                <span>Multi-currency balance</span>
-                <span className="status">Live</span>
+                <span>Salary preview</span>
+                <span className="status">Realtime</span>
               </div>
               <div className="balance">
-                <p>Total balance</p>
-                <h2>$12,480.32</h2>
-                <p className="sub">Updated realtime</p>
+                <p>Origin payroll</p>
+                <h2>${converted.origin.toLocaleString()}</h2>
+                <p className="sub">Local take-home ₦{converted.local.toLocaleString()}</p>
               </div>
-              <div className="currency-list">
-                <div>
-                  <p>US Dollar</p>
-                  <span>USD 6,580.12</span>
-                </div>
-                <div>
-                  <p>GBP Wallet</p>
-                  <span>GBP 3,240.76</span>
-                </div>
-                <div>
-                  <p>NGN Wallet</p>
-                  <span>NGN 2,659,844</span>
-                </div>
-              </div>
-              <div className="card-footer">
-                <p>Upcoming salary</p>
-                <strong>₹ 312,000 arriving Friday</strong>
-              </div>
+              <label htmlFor="heroRange" className="hero-range-label">
+                Drag to preview
+                <input
+                  id="heroRange"
+                  type="range"
+                  className="neon-range"
+                  min="2000"
+                  max="15000"
+                  value={salary}
+                  onChange={(event) => setSalary(Number(event.target.value))}
+                />
+              </label>
+              <p className="card-footer">Fees ${converted.fee.toFixed(2)} locked for 24h.</p>
             </div>
-            <div className="globe-card glass-card delay">
-              <p>Global cities ready</p>
-              <div className="globe-grid">
-                {cities.map((city) => (
-                  <span key={city.label}>
-                    {city.flag} {city.label}
-                  </span>
-                ))}
-              </div>
+            <div className="globe-card glass-card delay hero-cta-card">
+              <p>CrossPay turns global income into an intuitive experience: you get paid, and we handle the rest.</p>
+              <button className="primary ripple">Explore CrossPay Console</button>
             </div>
           </div>
         </section>
 
-        <CharacterStage characters={characters} />
-
-        <section className="section" id="features">
+        <section className="section narrative" id="narrative">
           <div className="section-heading">
-            <p className="eyebrow">WHY IT MATTERS</p>
-            <h2>Enterprise rails with playful clarity.</h2>
-            <p className="subhead">
-              Minimal UI, powerful exports, and automation primitives so CrossPay feels like the Zerodha console for salaries.
-            </p>
+            <p className="eyebrow">PROBLEM → SOLUTION → CROSSPAY</p>
+            <h2>Global earners need local feelings.</h2>
+            <p className="subhead">CrossPay’s story mirrors our users: they earn abroad but live at home.</p>
           </div>
           <div className="grid grid-3">
-            {featureHighlights.map((item) => (
-              <article className="card glass-card lift" key={item.title}>
-                <div className="icon-pill">
-                  <Icon name={item.icon} />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.detail}</p>
-                <small>{item.why}</small>
+            {narrativeBlocks.map((block) => (
+              <article className="card glass-card lift" key={block.title}>
+                <h3>{block.title}</h3>
+                <p>{block.copy}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="section flow-section" id="flow">
+        <section className="section wallet-ui" id="wallet">
           <div className="section-heading">
-            <p className="eyebrow">FLOW</p>
-            <h2>Every salary move plotted.</h2>
-            <p className="subhead">A neon timeline spells out exactly what happens between payroll file and local take-home.</p>
+            <p className="eyebrow">THE CROSSPAY SALARY WALLET</p>
+            <h2>Looks and feels like a real fintech app.</h2>
+            <p className="subhead">
+              Salaries enter CrossPay, and we immediately make them spendable in the country you call home.
+            </p>
           </div>
-          <div className="flow-timeline">
-            {flowSteps.map((step, index) => (
-              <div className="flow-step" key={step.title}>
-                <div className="flow-number">{step.number}</div>
-                <h4>{step.title}</h4>
-                <p>{step.detail}</p>
-                <span>Step {index + 1}</span>
+          <div className="wallet-screenshot glass-card lift">
+            <div className="wallet-left">
+              <div className="wallet-balance">
+                <span>Total balance</span>
+                <strong>$12,480.32</strong>
+              </div>
+              <ul>
+                <li>USD Wallet · ACH + Fedwire</li>
+                <li>GBP Wallet · Faster Payments</li>
+                <li>NGN Wallet · UPI / IMPS</li>
+              </ul>
+            </div>
+            <div className="wallet-right">
+              <p>Upcoming salary</p>
+              <strong>₹ 312,000 arriving Friday</strong>
+              <button className="primary ripple">Automate payout</button>
+            </div>
+          </div>
+        </section>
+
+        <section className="section architecture" id="contracts">
+          <div className="section-heading">
+            <p className="eyebrow">SMART CONTRACT ARCHITECTURE</p>
+            <h2>Boxes that explain the system.</h2>
+            <p className="subhead">Each module lives on-chain so salaries always feel predictable, transparent, and local.</p>
+          </div>
+          <div className="grid grid-3 contract-grid">
+            {contractBoxes.map((label) => (
+              <article className="card glass-card lift" key={label}>
+                <h3>{label}</h3>
+                <p>Runs on-chain to keep settlements transparent and automated.</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section stablecoin" id="logic">
+          <div className="section-heading">
+            <p className="eyebrow">ADVANCED STABLECOIN LOGIC</p>
+            <h2>Tied directly to Arc requirements.</h2>
+            <p className="subhead">Stablecoin rails remove FX and settlement anxiety for people who earn abroad.</p>
+          </div>
+          <ul className="stablecoin-list glass-card">
+            {stablecoinLogic.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="section flow-diagram" id="flow">
+          <div className="section-heading">
+            <p className="eyebrow">FLOW DIAGRAM</p>
+            <h2>US employer → Arc → local payout.</h2>
+            <p className="subhead">From employer to grocery store, CrossPay handles the entire route.</p>
+          </div>
+          <div className="flow-diagram-card glass-card">
+            {flowDiagram.map((step, index) => (
+              <div key={step} className="flow-diagram-step">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{step}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="section split" id="wallet">
-          <div className="wallet-copy">
-            <p className="eyebrow">SALARY WALLET</p>
-            <h2>Control each currency like a pro terminal.</h2>
-            <p className="subhead">
-              Wallet tabs, quick FX allocation, and instant statements. Everything is exportable and backed by glowing micro-interactions.
-            </p>
-            <div className="wallet-tabs">
-              {Object.keys(walletDetails).map((key) => (
-                <button
-                  key={key}
-                  className={`tab ${walletTab === key ? 'active' : ''}`}
-                  type="button"
-                  onClick={() => setWalletTab(key)}
-                >
-                  {key.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            <ul className="wallet-details">
-              {Object.entries(walletDetails).map(([key, value]) => (
-                <li key={key} className={walletTab === key ? 'active' : ''}>
-                  {value}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="calculator glass-card">
-            <div className="calc-header">
-              <p>FX Preview</p>
-              <strong>Mid + 0.35% fee · neon slider</strong>
-            </div>
-            <div className="calc-body">
-              <label htmlFor="salaryRange">Salary amount</label>
-              <input
-                type="range"
-                id="salaryRange"
-                className="neon-range"
-                min="2000"
-                max="15000"
-                value={salary}
-                onChange={(event) => setSalary(Number(event.target.value))}
-              />
-              <div className="calc-values">
-                <div className="pill">
-                  <p>Origin</p>
-                  <h3>${converted.origin.toLocaleString()}</h3>
-                </div>
-                <div className="pill accent">
-                  <p>Local take-home</p>
-                  <h3>₦{converted.local.toLocaleString()}</h3>
-                </div>
-              </div>
-              <p className="calc-foot">
-                Fees ${converted.fee.toFixed(2)} · neon lock pulses when rate is guaranteed.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section testimonials" id="testimonials">
-          <div className="section-heading">
-            <p className="eyebrow">PROOF</p>
-            <h2>Teams that live on CrossPay.</h2>
-            <p className="subhead">Short stories, instant conviction.</p>
-          </div>
-          <div className="grid grid-2">
-            <article className="testimonial glass-card lift">
-              <p>
-                “I pay a US team and live in Nairobi. CrossPay is the first wallet that makes FX transparent and receipts auditor-ready.”
-              </p>
-              <div>
-                <strong>Jason · Fractional CFO</strong>
-                <span>Supports teams in 5 countries</span>
-              </div>
-            </article>
-            <article className="testimonial glass-card lift">
-              <p>
-                “My DAO contributors are everywhere. I just send USDC in and CrossPay runs local delivery + compliance proof.”
-              </p>
-              <div>
-                <strong>Maya · Ops at Layer3 DAO</strong>
-                <span>200+ contributors</span>
-              </div>
-            </article>
-          </div>
-        </section>
+        <CharacterStage characters={characters} />
 
         <section className="section cta glass-card" id="ctaSection">
           <div>
-            <p className="eyebrow">READY?</p>
-            <h2>Turn global salaries into a local superpower.</h2>
-            <p className="subhead">Join the private beta, wire in payroll, and watch CrossPay automate everything.</p>
+            <p className="eyebrow">CALL TO ACTION</p>
+            <h2>Global salaries. Local superpowers.</h2>
+            <p className="subhead">Join the beta, route payroll through CrossPay, and live locally without friction.</p>
           </div>
           <div className="cta-actions">
             <input type="email" placeholder="Work email" />
@@ -362,7 +267,6 @@ function App() {
 
       <footer className="site-footer glass-card">
         <div className="footer-brand">
-          <div className="mascot">🦊</div>
           <div>
             <strong>CrossPay</strong>
             <p>Pixel-serious wallet for global salaries.</p>
@@ -372,8 +276,8 @@ function App() {
           <div>
             <h5>Product</h5>
             <a href="#wallet">Wallet</a>
-            <a href="#flow">Automation</a>
-            <a href="#features">Console</a>
+            <a href="#contracts">Architecture</a>
+            <a href="#flow">Flow diagram</a>
           </div>
           <div>
             <h5>Legal</h5>
