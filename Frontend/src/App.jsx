@@ -179,7 +179,7 @@ function App() {
         <section className="section wallet-ui" id="wallet">
           <div className="section-heading">
             <p className="eyebrow">THE CROSSPAY SALARY WALLET</p>
-            <h2>Looks and feels like a real fintech app.</h2>
+            <h2>Explore the world of Cross-border Wallets!</h2>
             <p className="subhead">
               Salaries enter CrossPay, and we immediately make them spendable in the country you call home.
             </p>
@@ -207,7 +207,7 @@ function App() {
         <section className="section architecture" id="contracts">
           <div className="section-heading">
             <p className="eyebrow">SMART CONTRACT ARCHITECTURE</p>
-            <h2>Boxes that explain the system.</h2>
+            <h2>Explaining the system.</h2>
             <p className="subhead">Each module lives on-chain so salaries always feel predictable, transparent, and local.</p>
           </div>
           <div className="grid grid-3 contract-grid">
