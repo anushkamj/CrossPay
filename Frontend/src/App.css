@@ -196,6 +196,20 @@ main {
   gap: 2.5rem;
   align-items: center;
   padding-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-wave {
+  position: absolute;
+  inset: 10% -20%;
+  height: 60%;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 79, 216, 0.35), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(71, 242, 233, 0.25), transparent 60%);
+  animation: heroWave 16s linear infinite alternate;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 .eyebrow {
@@ -286,6 +300,12 @@ main {
   margin: 0.3rem 0;
 }
 
+.fx-value {
+  display: inline-block;
+  animation: fxPulse 3s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(71, 242, 233, 0.6);
+}
+
 .currency-list {
   margin: 1rem 0;
   display: flex;
@@ -318,11 +338,29 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 0.65rem;
   background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  overflow: hidden;
 }
 
 .globe-grid span:hover {
   border-color: rgba(71, 242, 233, 0.6);
   box-shadow: 0 0 12px rgba(71, 242, 233, 0.3);
+}
+
+.globe-grid span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(71, 242, 233, 0.3), transparent 60%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+
+.globe-grid span:hover::after {
+  transform: scale(1.4);
+  opacity: 1;
 }
 
 .card,
@@ -370,10 +408,59 @@ main {
   font-size: 0.75rem;
 }
 
+.node-flow {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+}
+
+.node-flow .node {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.7rem;
+  animation: nodeGlow 2s ease infinite;
+}
+
+.node-flow .node i {
+  color: var(--accent-2);
+}
+
+.node-flow .simulate {
+  margin-left: auto;
+  font-size: 0.65rem;
+}
+
 .flow-diagram-card {
   padding: 1.5rem;
   display: grid;
   gap: 1rem;
+}
+
+.flow-beam {
+  position: relative;
+  height: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.flow-beam span {
+  position: absolute;
+  top: -6px;
+  left: -30%;
+  width: 40%;
+  height: 20px;
+  background: linear-gradient(90deg, #47f2e9, #ff4fd8);
+  filter: blur(8px);
+  animation: beamTravel 6s linear infinite;
 }
 
 .flow-diagram-step {
@@ -382,6 +469,20 @@ main {
   align-items: flex-start;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 0.8rem;
+  animation: highlightLoop 6s linear infinite;
+}
+
+.flow-diagram-step:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.flow-diagram-step:nth-child(3) {
+  animation-delay: 1s;
+}
+.flow-diagram-step:nth-child(4) {
+  animation-delay: 1.5s;
+}
+.flow-diagram-step:nth-child(5) {
+  animation-delay: 2s;
 }
 
 .flow-diagram-step:last-child {
@@ -629,6 +730,7 @@ main {
   border-radius: 50%;
   background: linear-gradient(90deg, #4fffe7, #a64cff);
   box-shadow: 0 0 15px rgba(71, 242, 233, 0.6);
+  animation: knobBreathe 3s ease-in-out infinite;
 }
 
 .calc-values {
@@ -687,6 +789,22 @@ main {
 .character-bubble span {
   font-size: 0.6rem;
   color: var(--accent-3);
+}
+
+.character-bubble:hover .idle-samurai {
+  animation: shimmer 1.2s linear;
+}
+
+.character-bubble:hover .idle-wizard {
+  animation: glow 1.2s ease;
+}
+
+.character-bubble:hover .idle-birdie {
+  animation: flap 1.2s ease;
+}
+
+.character-bubble:hover .idle-foxie {
+  animation: sway 1.2s ease;
 }
 
 .idle-samurai {
@@ -761,6 +879,37 @@ main {
   }
 }
 
+@keyframes heroWave {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+@keyframes fxPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 8px rgba(71, 242, 233, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 16px rgba(71, 242, 233, 0.8);
+  }
+}
+
+@keyframes knobBreathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
 @keyframes textShimmer {
   0% {
     background-position: 0% 50%;
@@ -779,6 +928,37 @@ main {
   50% {
     transform: scale(1.4);
     opacity: 1;
+  }
+}
+
+@keyframes beamTravel {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+@keyframes highlightLoop {
+  0% {
+    background: transparent;
+  }
+  40% {
+    background: rgba(71, 242, 233, 0.08);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes nodeGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(71, 242, 233, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(71, 242, 233, 0.4);
   }
 }
 

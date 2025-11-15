@@ -37,6 +37,8 @@ const flowDiagram = [
   'Compliance Receipts + analytics pushed to employer & user console.',
 ]
 
+const programmableNodes = ['USDC In', 'FX Timing', 'Salary Split', 'Payout', 'Receipts']
+
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('crosspay-theme') || 'dark')
   const [salary, setSalary] = useState(6000)
@@ -102,6 +104,7 @@ function App() {
 
       <main>
         <section className="hero" id="top">
+          <div className="hero-wave" aria-hidden="true" />
           <div className="hero-copy reveal">
             <p className="eyebrow">CrossPay · Global salaries made local</p>
             <h1>Earn anywhere. Live as a local.</h1>
@@ -136,8 +139,10 @@ function App() {
               </div>
               <div className="balance">
                 <p>Origin payroll</p>
-                <h2>${converted.origin.toLocaleString()}</h2>
-                <p className="sub">Local take-home ₦{converted.local.toLocaleString()}</p>
+                <h2 className="fx-value">${converted.origin.toLocaleString()}</h2>
+                <p className="sub">
+                  Local take-home <span className="fx-value">₦{converted.local.toLocaleString()}</span>
+                </p>
               </div>
               <label htmlFor="heroRange" className="hero-range-label">
                 Drag to preview
@@ -218,6 +223,15 @@ function App() {
               </article>
             ))}
           </div>
+          <div className="node-flow glass-card">
+            {programmableNodes.map((node, index) => (
+              <div className="node" key={node} style={{ animationDelay: `${index * 0.4}s` }}>
+                <span>{node}</span>
+                {index < programmableNodes.length - 1 && <i>→</i>}
+              </div>
+            ))}
+            <button className="ghost simulate">Simulate</button>
+          </div>
         </section>
 
         <section className="section stablecoin" id="logic">
@@ -239,6 +253,9 @@ function App() {
             <h2>US employer → Arc → local payout.</h2>
             <p className="subhead">From employer to grocery store, CrossPay handles the entire route.</p>
           </div>
+          <div className="flow-beam" aria-hidden="true">
+            <span />
+          </div>
           <div className="flow-diagram-card glass-card">
             {flowDiagram.map((step, index) => (
               <div key={step} className="flow-diagram-step">
@@ -259,6 +276,7 @@ function App() {
           </div>
           <div className="cta-actions">
             <input type="email" placeholder="Work email" />
+            <button className="primary ripple">Join waitlist</button>
           </div>
         </section>
       </main>
