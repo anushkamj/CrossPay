@@ -163,7 +163,7 @@ function App() {
         <section className="section narrative" id="narrative">
           <div className="section-heading">
             <p className="eyebrow arrow-trail">PROBLEM → CROSSPAY → SOLUTION</p>
-            <h2>Global earners need local feelings.</h2>
+            <h2>Global earners need local feelings 👾</h2>
             <p className="subhead">CrossPay’s story mirrors our users: they earn abroad but live at home.</p>
           </div>
           <div className="grid grid-3">
@@ -179,7 +179,7 @@ function App() {
         <section className="section wallet-ui" id="wallet">
           <div className="section-heading">
             <p className="eyebrow">THE CROSSPAY SALARY WALLET</p>
-            <h2>Explore the world of Cross-border Wallets!</h2>
+            <h2>Explore the world of Cross border Wallets 💳</h2>
             <p className="subhead">
               Salaries enter CrossPay, and we immediately make them spendable in the country you call home.
             </p>
@@ -207,7 +207,7 @@ function App() {
         <section className="section architecture" id="contracts">
           <div className="section-heading">
             <p className="eyebrow">SMART CONTRACT ARCHITECTURE</p>
-            <h2>Explaining the system.</h2>
+            <h2>Explaining the system 👾</h2>
             <p className="subhead">Each module lives on-chain so salaries always feel predictable, transparent, and local.</p>
           </div>
           <div className="grid grid-3 contract-grid">
@@ -223,7 +223,7 @@ function App() {
         <section className="section stablecoin" id="logic">
           <div className="section-heading">
             <p className="eyebrow">ADVANCED STABLECOIN LOGIC</p>
-            <h2>Tied directly to Arc requirements.</h2>
+            <h2>Tied directly to Arc requirements</h2>
             <p className="subhead">Stablecoin rails remove FX and settlement anxiety for people who earn abroad.</p>
           </div>
           <ul className="stablecoin-list glass-card">
