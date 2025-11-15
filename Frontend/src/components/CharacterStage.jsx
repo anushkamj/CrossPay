@@ -34,11 +34,12 @@ const CharacterStage = ({ characters }) => {
       <div className="section-heading">
         <p className="eyebrow">Playground</p>
         <h2>Meet the CrossPay crew.</h2>
-        <p>
+        <p className="subhead">
           Each avatar mirrors a core module: onboarding, FX, payouts, reporting,
           and employer tools. Tap a move to trigger a React-driven animation and
           reuse the pattern across the app.
         </p>
+        <p className="micro-callout">Tap a move to animate their signature skill.</p>
       </div>
       <div className="character-stage">
         {characters.map((character) => {
@@ -77,10 +78,6 @@ CharacterStage.propTypes = {
       idle: PropTypes.string.isRequired,
       animationClasses: PropTypes.arrayOf(PropTypes.string).isRequired,
       duration: PropTypes.number.isRequired,
-      position: PropTypes.shape({
-        top: PropTypes.string.isRequired,
-        left: PropTypes.string.isRequired,
-      }).isRequired,
       actionDescription: PropTypes.string.isRequired,
     })
   ).isRequired,

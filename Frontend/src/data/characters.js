@@ -9,7 +9,6 @@ export const characters = [
     actionDescription: 'Salary Samurai performed a cross-border slash!',
     animationClasses: ['pulse-boost', 'shake-boost'],
     duration: 1200,
-    position: { top: '8%', left: '8%' },
   },
   {
     id: 'wizard',
@@ -21,7 +20,6 @@ export const characters = [
     actionDescription: 'FX Wizard conjured a perfect spell!',
     animationClasses: ['pulse-boost'],
     duration: 900,
-    position: { top: '8%', left: '52%' },
   },
   {
     id: 'builder',
@@ -33,7 +31,6 @@ export const characters = [
     actionDescription: 'Hardhat Builder hammered brand-new rails!',
     animationClasses: ['shake-boost'],
     duration: 900,
-    position: { top: '38%', left: '18%' },
   },
   {
     id: 'birdie',
@@ -45,7 +42,6 @@ export const characters = [
     actionDescription: 'Delivery Birdie flapped to deliver funds!',
     animationClasses: ['float-fast'],
     duration: 1600,
-    position: { top: '35%', left: '58%' },
   },
   {
     id: 'foxie',
@@ -57,6 +53,5 @@ export const characters = [
     actionDescription: 'Mr Foxie shared joyful statements!',
     animationClasses: ['pulse-boost'],
     duration: 1000,
-    position: { top: '18%', left: '78%' },
   },
 ]
