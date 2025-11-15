@@ -259,7 +259,6 @@ function App() {
           </div>
           <div className="cta-actions">
             <input type="email" placeholder="Work email" />
-            <button className="primary ripple">Join waitlist</button>
           </div>
         </section>
       </main>
