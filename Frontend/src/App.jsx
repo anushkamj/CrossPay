@@ -163,7 +163,7 @@ function App() {
 
         <section className="section narrative" id="narrative">
           <div className="section-heading">
-            <p className="eyebrow">PROBLEM → SOLUTION → CROSSPAY</p>
+            <p className="eyebrow arrow-trail">PROBLEM → CROSSPAY → SOLUTION</p>
             <h2>Global earners need local feelings.</h2>
             <p className="subhead">CrossPay’s story mirrors our users: they earn abroad but live at home.</p>
           </div>

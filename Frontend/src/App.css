@@ -230,12 +230,14 @@ main {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 1.3rem;
 }
 
 .stats {
   display: flex;
-  gap: 1.2rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .stats span {
@@ -394,6 +396,14 @@ main {
 .micro-callout {
   font-size: 0.6rem;
   color: var(--accent-2);
+}
+
+.arrow-trail {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--accent-2);
+  display: inline-block;
+  margin-bottom: 0.6rem;
 }
 
 .flow-step {
