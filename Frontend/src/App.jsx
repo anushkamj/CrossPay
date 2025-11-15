@@ -95,7 +95,6 @@ function App() {
             </button>
             <div className="nav-cta">
               <button className="ghost">Log in</button>
-              <button className="primary">Join waitlist</button>
             </div>
           </div>
         </nav>
